@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>Music | Add</title> {% endblock %}
+
+{% block body %}
+    
+    <div>
+        <h1>Bem Vindo ao Music</h1>
+
+    <form method="POST" action="/add_music">
+
+        <div>
+            <label for="name">Nome da Música:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div>
+            <label for="artist">Artista:</label>
+            <input type="text" id="artist" name="artist" required>
+        </div>
+
+        <div>
+            <label for="genre">Gênero:</label>
+            <select id="genre" name="genre" required>
+                <option value="">-- Selecione --</option>
+                {% for g in genres %}
+                    <option value="{{ g.value }}">{{ g.value }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div>
+            <button type="submit">Adicionar Música</button>
+        </div>
+    </form>
+
+    </div>
+
+{% endblock %}

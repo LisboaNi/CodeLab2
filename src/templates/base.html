@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.add_music')}}">Add</a></li>
+                <li><a href="{{ url_for('main.list_music')}}">List</a></li>
+                <li><a href="{{ url_for('main.add_user') }}">User</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div>
+            {% block body %}{% endblock %}
+        </div>
+    </main>
+    
+</body>
+</html>
