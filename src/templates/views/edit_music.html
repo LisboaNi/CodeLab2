@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>Music | Add</title> {% endblock %}
+
+{% block body %}
+    
+    <div>
+        <h1>Bem Vindo ao Music</h1>
+
+    <form method="POST" action="{{ url_for('main.edit_music', music_id=music.id) }}">
+
+        <div>
+            <label for="name">Nome da Música:</label>
+            <input type="text" id="name" name="name" value="{{ music.name }}" required>
+        </div>
+
+        <div>
+            <label for="artist">Artista:</label>
+            <input type="text" id="artist" name="artist" value="{{ music.artist }}" required>
+        </div>
+
+        <div>
+            <label for="genre">Gênero:</label>
+            <select id="genre" name="genre" required>
+                <option value="">-- Selecione --</option>
+                {% for g in genres %}
+                    <option value="{{ g.value }}" {% if g.value == music.genre.value %}selected{% endif %}>
+                        {{ g.value }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div>
+            <button type="submit">Editar Música</button>
+        </div>
+    </form>
+
+    </div>
+
+{% endblock %}

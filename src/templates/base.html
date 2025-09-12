@@ -12,9 +12,16 @@
     <header>
         <nav>
             <ul>
-                <li><a href="{{ url_for('main.add_music')}}">Add</a></li>
-                <li><a href="{{ url_for('main.list_music')}}">List</a></li>
-                <li><a href="{{ url_for('main.add_user') }}">User</a></li>
+                {% if not session.get('username') %}
+                    <li><a href="{{ url_for('main.add_user') }}">User</a></li>
+                    <li><a href="{{ url_for('main.authenticar') }}">Login</a></li>
+                {% endif %}
+                {% if session.get('username') %}
+                    <li><a href="{{ url_for('main.add_music')}}">Add</a></li>
+                    <li><a href="{{ url_for('main.list_music')}}">List</a></li>
+                    <li><a href="{{ url_for('main.logout') }}">Sair</a></li>
+                    <li>{{ session['username'] }}</li>
+                {% endif %}
             </ul>
         </nav>
     </header>
