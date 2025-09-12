@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %} <title>Music | Login</title> {% endblock %}
+
+{% block body %}
+    
+    <div>
+        <h1>Bem Vindo ao Music</h1>
+
+    <form method="POST" action="/authenticar">
+
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <div>
+            <button type="submit">Entrar</button>
+        </div>
+    </form>
+
+    </div>
+
+{% endblock %}

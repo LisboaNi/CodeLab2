@@ -9,7 +9,10 @@
 
     <ul>
     {% for music in list_music %}
-        <li>{{ music.user_id }} - {{ music.id }} - {{ music.name }} - {{ music.artist }} - {{ music.genre.value }}</li>
+        <li>{{ music.user_id }} - {{ music.id }} - {{ music.name }} - {{ music.artist }} - {{ music.genre.value }} - 
+            <a href="{{ url_for('main.edit_music', music_id=music.id)}}">Editar</a>
+            <a href="{{ url_for('main.del_music', music_id=music.id )}}">Excluir</a>
+        </li>
     {% else %}
         <li>Nenhuma música cadastrada.</li>
     {% endfor %}
